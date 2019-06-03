@@ -37,8 +37,8 @@ if [[ -f $SWAGGER_JSON ]]; then
 fi
 
 # replace the PORT that nginx listens on if PORT is supplied
-if [[ -n "${PORT}" ]]; then
-    sed -i "s|8080|${PORT}|g" /etc/nginx/nginx.conf
+if [[ -n "${SWAGGER_UI_PORT}" ]]; then
+    sed -i "s|8080|${SWAGGER_UI_PORT}|g" /etc/nginx/nginx.conf
 fi
 
 find $NGINX_ROOT -type f -regex ".*\.\(html\|js\|css\)" -exec sh -c "gzip < {} > {}.gz" \;
